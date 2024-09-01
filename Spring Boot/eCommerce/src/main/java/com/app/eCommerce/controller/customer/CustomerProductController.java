@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.eCommerce.dto.ProductDetailDto;
 import com.app.eCommerce.dto.ProductDto;
 import com.app.eCommerce.services.customer.CustomerProductService;
 
@@ -30,6 +31,17 @@ public class CustomerProductController {
 	public ResponseEntity<List<ProductDto>> getAllProductsByName(@PathVariable String name){
 		List<ProductDto> productDtos = customerProductService.searchProductByTitle(name);
 		return ResponseEntity.ok(productDtos);
+	}
+	
+	@GetMapping("/product/{productId}")
+	public ResponseEntity<ProductDetailDto> getProductDetailById(@PathVariable Long productId){
+		ProductDetailDto productDetailDto = customerProductService.getProductDetailById(productId);
+		
+		if(productDetailDto ==null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(productDetailDto);
 	}
 }
 

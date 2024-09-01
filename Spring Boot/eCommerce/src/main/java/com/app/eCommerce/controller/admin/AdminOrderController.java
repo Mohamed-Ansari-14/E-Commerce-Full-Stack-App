@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.eCommerce.dto.AnalyticsResponse;
 import com.app.eCommerce.dto.OrderDto;
 import com.app.eCommerce.services.admin.adminOrder.AdminOrderService;
 
@@ -35,6 +36,11 @@ public class AdminOrderController {
 		}
 		
 		return ResponseEntity.status(HttpStatus.OK).body(orderDto);
+	}
+	
+	@GetMapping("/order/analytics")
+	public ResponseEntity<AnalyticsResponse> getAnalytics(){
+		return ResponseEntity.ok(adminOrderService.calculateAnalytics());
 	}
 }
 

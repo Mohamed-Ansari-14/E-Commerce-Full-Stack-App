@@ -39,6 +39,11 @@
                 <button mat-raised-button color="primary" class="update-button" 
                         (click)="addToCart(product.id)">Add to Cart</button>
             </div>
+
+            <div class="actions">
+                <button mat-raised-button color="primary" class="review-button" 
+                    routerLink="/customer/product/{{ product.id }}">Product Review</button>
+            </div>
         </div>
     </mat-card>
 </div>

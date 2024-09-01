@@ -33,7 +33,7 @@ export class PlaceOrderComponent {
     this.customerService.placeOrder(this.orderForm.value).subscribe(res => {
       if(res.id != null){
         this.snackBar.open("Order placed successfully.", "Close", { duration: 5000});
-        this.router.navigateByUrl("/customer/my-orders");
+        this.router.navigateByUrl("/customer/my_orders");
         this.closeForm();
       }else{
         this.snackBar.open("Something went wrong!", "Close", { duration: 5000 });
