@@ -38,7 +38,7 @@ public class AuthController {
 	private final UserRepository userRepository;
 
 	private final JwtUtil jwtUtil;
-	
+
 	private final AuthService authService;
 
 	public static final String TOKEN_PREFIX = "Bearer ";
@@ -66,7 +66,7 @@ public class AuthController {
 					.put("role", optionalUser.get().getRole())
 					.toString()
 					);
-			
+
 			response.addHeader("Access-Control-Expose-Headers", "Authorization");
 			response.addHeader("Access-Control-Allow-Headers", "Authorization, X-PINGOTHER, Origin, " + 
 					"X-Requested-With, Content-Type, Accept, X-Custom-header");

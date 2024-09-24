@@ -31,14 +31,20 @@ export class PlaceOrderComponent {
 
   placeOrder(){
     this.customerService.placeOrder(this.orderForm.value).subscribe(res => {
+      console.log("Response: ", res);  // Debugging
       if(res.id != null){
+        console.log("Order placed");  // Debugging
         this.snackBar.open("Order placed successfully.", "Close", { duration: 5000});
         this.router.navigateByUrl("/customer/my_orders");
         this.closeForm();
       }else{
+        console.log("Error placing order");  // Debugging
         this.snackBar.open("Something went wrong!", "Close", { duration: 5000 });
       }
-    })
+    }, err => {
+      console.error("Error: ", err);  // Handle any errors
+      this.snackBar.open("Order failed!", "Close", { duration: 5000 });
+    });
   }
 
   closeForm(){

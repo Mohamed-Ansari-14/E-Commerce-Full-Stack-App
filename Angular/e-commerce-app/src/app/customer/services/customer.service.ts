@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { UserStorageService } from 'src/app/services/storage/user-storage.service';
+import { User } from 'src/app/models/user.model';
 
 const BASIC_URL = "http://localhost:8080/";
 
@@ -111,6 +112,10 @@ export class CustomerService {
     return this.http.get(BASIC_URL + `api/customer/wishlist/${userId}`, { 
       headers: this.createAuthorizationHeader(),
     });
+  }
+
+  getUser(id: number): Observable<any> {
+    return this.http.get(BASIC_URL + `api/customer/profile/${id}`);
   }
 
   private createAuthorizationHeader(): HttpHeaders{

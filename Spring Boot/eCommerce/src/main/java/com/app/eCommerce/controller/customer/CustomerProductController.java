@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.eCommerce.dto.ProductDetailDto;
 import com.app.eCommerce.dto.ProductDto;
+import com.app.eCommerce.entity.User;
 import com.app.eCommerce.services.customer.CustomerProductService;
 
 import lombok.RequiredArgsConstructor;
@@ -42,6 +43,16 @@ public class CustomerProductController {
 		}
 		
 		return ResponseEntity.ok(productDetailDto);
+	}
+	
+	@GetMapping("/profile/{id}")
+	public ResponseEntity<User> getProfileOfUser(@PathVariable Long id) {
+		User user = customerProductService.getUserById(id);
+		if (user != null) {
+			return ResponseEntity.ok(user);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 }
 

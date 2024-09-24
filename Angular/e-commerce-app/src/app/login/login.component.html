@@ -3,7 +3,7 @@
         <mat-card-title>Login</mat-card-title>
 
         <mat-card-content>
-            <form [formGroup]="loginForm">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
@@ -29,7 +29,7 @@
                 </mat-form-field>
 
                 <button mat-raised-button color="primary" type="submit" 
-                    [disabled]="loginForm.invalid" (click)="onSubmit()">Login</button>
+                    [disabled]="loginForm.invalid">Login</button>
 
             </form>
         </mat-card-content>

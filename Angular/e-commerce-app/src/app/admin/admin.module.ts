@@ -16,6 +16,7 @@ import { PostProductFaqComponent } from './components/post-product-faq/post-prod
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { OrderByStatusComponent } from './components/analytics/order-by-status/order-by-status.component';
+import { AllUsersComponent } from './components/all-users/all-users.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { OrderByStatusComponent } from './components/analytics/order-by-status/o
     PostProductFaqComponent,
     UpdateProductComponent,
     AnalyticsComponent,
-    OrderByStatusComponent
+    OrderByStatusComponent,
+    AllUsersComponent
   ],
   imports: [
     CommonModule,

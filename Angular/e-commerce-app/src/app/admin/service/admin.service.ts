@@ -5,6 +5,14 @@ import { UserStorageService } from 'src/app/services/storage/user-storage.servic
 
 const BASIC_URL = "http://localhost:8080/";
 
+export interface User {
+  id: number;
+  email: string;
+  password: string;
+  name: string;
+  role: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -92,6 +100,12 @@ export class AdminService {
 
   getAnalytics(): Observable<any> {
     return this.http.get(BASIC_URL + 'api/admin/order/analytics', {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getAllUsers(): Observable<any> {
+    return this.http.get(BASIC_URL + 'api/admin/users', {
       headers: this.createAuthorizationHeader(),
     });
   }

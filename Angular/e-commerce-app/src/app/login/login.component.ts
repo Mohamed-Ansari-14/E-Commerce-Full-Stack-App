@@ -40,12 +40,14 @@ export class LoginComponent {
       (res) => {
         if(UserStorageService.isAdminLoggedIn()){
           this.router.navigateByUrl('admin/dashboard');
+          this.snackbar.open('Login successful as admin.', 'Close', { duration: 2000 });
         }else if(UserStorageService.isCustomerLoggedIn()){
           this.router.navigateByUrl('customer/dashboard');
+          this.snackbar.open('Login successful as customer.', 'Close', { duration: 2000 });
         }
       },
       (error) => {
-        this.snackbar.open('Invalid credentials.', 'Error', { duration: 5000 });
+        this.snackbar.open('Invalid credentials.', 'Close', { duration: 5000 });
       }
     )
   }

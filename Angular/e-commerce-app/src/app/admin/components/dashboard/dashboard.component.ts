@@ -52,12 +52,15 @@ export class DashboardComponent {
 
   deleteProduct(productId: any){
     this.adminService.deleteProduct(productId).subscribe(res => {
-      if(res.body == null){
+      if(!res){
+        console.log("Coming Inside!!!!!!");        
         this.snackBar.open('Product Deleted Successfully', 'Close', { duration : 5000 });
         this.getAllProducts();
       }else{
         this.snackBar.open(res.message, 'Close', { duration : 5000, panelClass: 'error-snackbar' });
       }
+    }, error => {
+      console.log("Error", error.message);     
     })
   }
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserStorageService } from './services/storage/user-storage.service';
 import { Router } from '@angular/router';
+import { CustomerService } from './customer/services/customer.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,16 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'e-commerce-app';
 
+  userId: string;
+
   isCustomerLoggedIn : boolean = UserStorageService.isCustomerLoggedIn();
   isAdminLoggedIn : boolean = UserStorageService.isAdminLoggedIn();
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+  ) { 
+    this.userId = UserStorageService.getUserId();
+  }
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
@@ -25,5 +32,11 @@ export class AppComponent {
   logout(){
     UserStorageService.signOut();
     this.router.navigateByUrl('login');
+  }
+
+  goToProfile(): void {
+    if (this.userId) {
+      this.router.navigate(['/customer/profile', this.userId]);
+    }
   }
 }

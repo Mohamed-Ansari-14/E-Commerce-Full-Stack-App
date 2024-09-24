@@ -11,9 +11,11 @@ import com.app.eCommerce.dto.ProductDto;
 import com.app.eCommerce.entity.FAQ;
 import com.app.eCommerce.entity.Product;
 import com.app.eCommerce.entity.Review;
+import com.app.eCommerce.entity.User;
 import com.app.eCommerce.repository.FAQRepository;
 import com.app.eCommerce.repository.ProductRepository;
 import com.app.eCommerce.repository.ReviewRepository;
+import com.app.eCommerce.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -26,6 +28,8 @@ public class CustomerProductServiceImpl implements CustomerProductService{
 	private final FAQRepository faqRepository;
 	
 	private final ReviewRepository reviewRepository;
+	
+	private final UserRepository userRepository;
 
 	public List<ProductDto> getAllProducts(){
 		List<Product> products = productRepository.findAll();
@@ -53,6 +57,10 @@ public class CustomerProductServiceImpl implements CustomerProductService{
 			
 		}
 		return null;
+	}
+	
+	public User getUserById(Long id) {
+		return userRepository.findById(id).orElse(null);
 	}
 }
 

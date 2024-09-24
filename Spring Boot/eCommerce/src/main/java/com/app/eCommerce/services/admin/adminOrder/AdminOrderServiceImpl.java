@@ -119,9 +119,7 @@ public class AdminOrderServiceImpl implements AdminOrderService{
 			sum += order.getAmount();
 		}
 		return sum;
-	}
-	
-	
+	}	
 }
 
 

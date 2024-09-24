@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.eCommerce.dto.FAQDto;
 import com.app.eCommerce.dto.ProductDto;
-import com.app.eCommerce.entity.Product;
 import com.app.eCommerce.services.admin.adminproduct.AdminProductService;
 import com.app.eCommerce.services.admin.faq.FAQService;
 
